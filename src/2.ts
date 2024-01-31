@@ -34,9 +34,9 @@ class Employee {
 class Manager extends Employee {
   // Реалізуйте конструктор та збільшіть salary на 10000
   constructor(name: string, department: string, salary: number){
-    super(name,  department, salary)
+    super(name,  department, salary+10000)
   }
-  private riseSalary() {
+  private riseSalary():number {
     this.salary += 1000
     console.log(this.salary)
     return this.salary
