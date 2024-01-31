@@ -10,7 +10,7 @@ class Key {
 class Person{
     constructor(public key: Key) { }
     
-    getKey():any {
+    getKey():Key {
         return this.key;
     }
 }
@@ -25,17 +25,15 @@ abstract class House {
         
     }
 
-    abstract openDoor(keySignature: number): void;
+    public abstract openDoor(key: Key): void;
     
 
     comeIn(person:Person) {
-       if(this.door===true){
+       if(this.door){
         this.tenants.push(person);
            console.log(`Tenants ${this.tenants}`)
        }
-       else {
-           return
-        }
+ 
     }
 }
 
@@ -43,8 +41,8 @@ class MyHouse extends House{
  
         
     
-     openDoor(keySignature: number) {
-        if (keySignature === this.key.getSignature()) {
+    public openDoor(key: Key) {
+        if (key.getSignature() === this.key.getSignature()) {
             this.door = true
             console.log('The door is open')
         }
